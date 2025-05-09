@@ -2,11 +2,6 @@
 
 void putchar(char ch);
 
-size_t sizeof(void *src) {
-  void *s = *src;
-  while 
-
-
 void *memset(void *buf, char c, size_t n) {
   uint8_t *p = (uint8_t *)buf;
   while (n--)
@@ -22,9 +17,24 @@ void *memcpy(void *dst, const void *src, size_t n) {
   return dst;
 }
 
-char *strcpy_s(char *dst, size_t dstsz, const char *src) {
+char *strcpy(char *dst, const char *src) {
   char *d = dst;
-  while ( 
+  while (*src)
+    *d++ = *src++;
+  *d = '\0';
+  return dst;
+}
+
+int strcmp(const char *s1, const char *s2) {
+  while (*s1 && *s2) {
+    if (*s1 != *s2)
+      break;
+    s1++;
+    s2++;
+  }
+
+  return *(unsigned char *)s1 - *(unsigned char *) s2;
+}
 
 
 void printf(const char *fmt, ...) {
